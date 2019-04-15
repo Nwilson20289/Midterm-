@@ -71,6 +71,10 @@ output            : papaja::apa6_pdf
   
   ```{r setup, include = FALSE}
 library("papaja")
+library(data.table)
+#fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")
+all_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")
+
 ```
 
 ```{r analysis-preferences}
