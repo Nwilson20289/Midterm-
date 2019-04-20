@@ -21,20 +21,13 @@ authornote: |
   A Brooklyn College Graduate Student. Also, a Brooklyn College Research Assistant. 
 
 abstract: |
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
+ 
+ A reproduction of the analysis for Experiment 1 from
+ Ella L. James Michael B. Bonsall, Laura Hoppitt, Elizabeth M. Tunbridge, John R. Geddes, Amy L. Milton. 
+ 
+  This report re-produces the analysis of Experiment 1 reported in Ella L.James and John R. Geddes (2015). The data was downloaded from ("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv") 
   
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
-  
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
-  
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
-  
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
-  
-  One or two sentences to put the results into a more **general context**.
-  
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
-  
+  James et al.(2015) analyzed two trial gatherings, anticipating that a gathering that finished a memory-reactivation task in addition to Tetris amusement play would demonstrate a lower recurrence of meddling recollections of an awful film, compared with a control bunch given no undertakings. The reactivation-in addition to Tetris gathering (n = 26) finished a memory-reactivation task—introduction of 11 film stills pursued by a filler task for 10 min and afterward played Tetris for 12 min. The control gathering (n = 26) was neither given the memory-reactivation task nor played Tetris; rather, after the 10-min filler task, they had a 12-min break in which there was no undertaking. Along these lines, the two gatherings kept on chronicle meddling recollections for 7 (Days 1– 7). they predicted that reconsolidation of a reactivated visual memory of experimental trauma could be disrupted by engaging in a visuospatial task that would compete for visual working memory resources. 
   <!-- https://tinyurl.com/ybremelq -->
   
 keywords          : "intrusive memory, intrusions, reconsolidation, computer game, involuntary memory, trauma film, mental imagery, emotion, open data, open materials"
@@ -68,29 +61,102 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 
 # Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+ <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
 
 ## Participants
+There were 52 partcipants. 26 per section.  
 
 ## Material
+The details of the Computer Game Play Reduces Intrusive Memories of Experimental Trauma via Reconsolidation-Update Mechanisms are in the report of James et al(2015). 
 
 ## Procedure
+This test included three research facility sessions just as the fruition of a pen-and-paper journal at home to record the every day recurrence of meddlesome recollections (both more than 24 hr and after that for an extra 7 days).
 
-## Data analysis
-We used `r cite_r("r-references.bib")` for all our analyses.
+```{r include=FALSE}
+library(data.table)
+#fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")
+all_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")
+
+
+all_data$Condition <- as.factor(all_data$Condition)
+levels(all_data$Condition) <- c("Control",
+                                "Reactivation+Tetris", 
+                                "Tetris_only",
+                                "Reactivation_only")
+
+library(dplyr)
+
+library(ggplot2)
+
+# get means and SEs
+descriptive_df <- all_data %>% 
+                    group_by(Condition) %>% 
+                    summarise(means= mean(Days_One_to_Seven_Number_of_Intrusions),
+                              SEs = sd(Days_One_to_Seven_Number_of_Intrusions)/sqrt(length(Days_One_to_Seven_Number_of_Intrusions)))
+
+aov(Days_One_to_Seven_Number_of_Intrusions ~ Condition, all_data)
+
+```
 
 
 # Results
+Means for each subject in each conditon in a one factor (Control vs Reactivation Plus Tetris ) before intervention and ((Tetris only and Reactivation only) vs Control) after intervention.
+Were submitted to a one factor ANOVA. Means results are displayed in Table 1 and Figure 1. The full ANOVA table is reported in Table 2. 
 
 # Discussion
-
-
-\newpage
+The re-analysis successfully reproduced the reported James et al. 
 
 # References
 ```{r create_r-references}
 r_refs(file = "r-references.bib")
 ```
+
+\newpage
+Figure 1 
+Graph of Conditions VS Means for Experiment 1
+```{r}
+# Make the plot
+ggplot(descriptive_df, aes(x=Condition, y=means))+ 
+  geom_bar(stat="identity", aes(fill=Condition))+ # add means
+  geom_errorbar(aes(ymin=means-SEs,               # add error bars
+                    ymax=means+SEs), width=.1) +
+  geom_point(data=all_data, aes(x=Condition, y=Days_One_to_Seven_Number_of_Intrusions), alpha=.5)+
+  geom_point(alpha=.25)+
+  ylab("Intrusive Memories (Mean for Week)")
+```
+
+\newpage
+Table 1 
+
+Means of Intervention Before and After Experiment 1
+
+```{r}
+descriptive_df <- all_data %>% 
+                    group_by(Condition) %>% 
+                    summarise(means= mean(Days_One_to_Seven_Number_of_Intrusions),
+                              SEs = sd(Days_One_to_Seven_Number_of_Intrusions)/sqrt(length(Days_One_to_Seven_Number_of_Intrusions)))
+
+knitr::kable(descriptive_df)
+
+
+```
+
+\newpage
+
+Table 2 
+ANOVA Table for Experiment 1. 
+
+```{r}
+
+
+library(xtable)
+aov_out<-aov(Days_One_to_Seven_Number_of_Intrusions ~ Condition, all_data)
+summary_out<-summary(aov_out)
+
+knitr::kable(xtable(summary_out))
+```
+
+
 
 \begingroup
 \setlength{\parindent}{-0.5in}

@@ -112,27 +112,29 @@ Wilson Shekoni, 2900 Bedford Ave, Brooklyn NY, 11210. E-mail:
 \href{mailto:norlander3@gmail.com}{\nolinkurl{norlander3@gmail.com}}}
 
 \abstract{
-One or two sentences providing a \textbf{basic introduction} to the
-field, comprehensible to a scientist in any discipline.
+A reproduction of the analysis for Experiment 1 from Ella L. James
+Michael B. Bonsall, Laura Hoppitt, Elizabeth M. Tunbridge, John R.
+Geddes, Amy L. Milton.
 
-Two to three sentences of \textbf{more detailed background},
-comprehensible to scientists in related disciplines.
+This report re-produces the analysis of Experiment 1 reported in Ella
+L.James and John R. Geddes (2015). The data was downloaded from
+(``\url{https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv}'')
 
-One sentence clearly stating the \textbf{general problem} being
-addressed by this particular study.
-
-One sentence summarizing the main result (with the words ``\textbf{here
-we show}'' or their equivalent).
-
-Two or three sentences explaining what the \textbf{main result} reveals
-in direct comparison to what was thought to be the case previously, or
-how the main result adds to previous knowledge.
-
-One or two sentences to put the results into a more \textbf{general
-context}.
-
-Two or three sentences to provide a \textbf{broader perspective},
-readily comprehensible to a scientist in any discipline.
+James et al.(2015) analyzed two trial gatherings, anticipating that a
+gathering that finished a memory-reactivation task in addition to Tetris
+amusement play would demonstrate a lower recurrence of meddling
+recollections of an awful film, compared with a control bunch given no
+undertakings. The reactivation-in addition to Tetris gathering (n = 26)
+finished a memory-reactivation task---introduction of 11 film stills
+pursued by a filler task for 10 min and afterward played Tetris for 12
+min. The control gathering (n = 26) was neither given the
+memory-reactivation task nor played Tetris; rather, after the 10-min
+filler task, they had a 12-min break in which there was no undertaking.
+Along these lines, the two gatherings kept on chronicle meddling
+recollections for 7 (Days 1-- 7). they predicted that reconsolidation of
+a reactivated visual memory of experimental trauma could be disrupted by
+engaging in a visuospatial task that would compete for visual working
+memory resources.
 
 
 }
@@ -142,65 +144,80 @@ readily comprehensible to a scientist in any discipline.
 
 \section{Methods}\label{methods}
 
-We report how we determined our sample size, all data exclusions (if
-any), all manipulations, and all measures in the study.
-
 \subsection{Participants}\label{participants}
+
+There were 52 partcipants. 26 per section.
 
 \subsection{Material}\label{material}
 
+The details of the Computer Game Play Reduces Intrusive Memories of
+Experimental Trauma via Reconsolidation-Update Mechanisms are in the
+report of James et al(2015).
+
 \subsection{Procedure}\label{procedure}
 
-\subsection{Data analysis}\label{data-analysis}
-
-We used R (Version 3.5.2; R Core Team, 2018) and the R-packages
-\emph{data.table} (Version 1.12.0; Dowle \& Srinivasan, 2019),
-\emph{devtools} (Version 2.0.1; Wickham, Hester, \& Chang, 2018),
-\emph{dplyr} (Version 0.8.0.1; Wickham, François, Henry, \& Müller,
-2019), \emph{papaja} (Version 0.1.0.9842; Aust \& Barth, 2018), and
-\emph{usethis} (Version 1.4.0; Wickham \& Bryan, 2018) for all our
-analyses.
+This test included three research facility sessions just as the fruition
+of a pen-and-paper journal at home to record the every day recurrence of
+meddlesome recollections (both more than 24 hr and after that for an
+extra 7 days).
 
 \section{Results}\label{results}
 
+Means for each subject in each conditon in a one factor (Control vs
+Reactivation Plus Tetris ) before intervention and ((Tetris only and
+Reactivation only) vs Control) after intervention. Were submitted to a
+one factor ANOVA. Means results are displayed in Table 1 and Figure 1.
+The full ANOVA table is reported in Table 2.
+
 \section{Discussion}\label{discussion}
+
+The re-analysis successfully reproduced the reported James et al.
+
+\section{References}\label{references}
 
 \newpage
 
-\section{References}\label{references}
+Figure 1 Graph of Conditions VS Means for Experiment 1
+\includegraphics{testMidterm_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\newpage
+
+Table 1
+
+Means of Intervention Before and After Experiment 1
+
+\begin{tabular}{l|r|r}
+\hline
+Condition & means & SEs\\
+\hline
+Control & 5.111111 & 0.9963623\\
+\hline
+Reactivation+Tetris & 1.888889 & 0.4113495\\
+\hline
+Tetris\_only & 3.888889 & 0.6806806\\
+\hline
+Reactivation\_only & 4.833333 & 0.7848650\\
+\hline
+\end{tabular}
+
+\newpage
+
+Table 2 ANOVA Table for Experiment 1.
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+  & Df & Sum Sq & Mean Sq & F value & Pr(>F)\\
+\hline
+Condition & 3 & 114.8194 & 38.27315 & 3.794762 & 0.0140858\\
+\hline
+Residuals & 68 & 685.8333 & 10.08578 & NA & NA\\
+\hline
+\end{tabular}
 
 \begingroup
 \setlength{\parindent}{-0.5in} \setlength{\leftskip}{0.5in}
 
 \hypertarget{refs}{}
-\hypertarget{ref-R-papaja}{}
-Aust, F., \& Barth, M. (2018). \emph{papaja: Create APA manuscripts with
-R Markdown}. Retrieved from \url{https://github.com/crsh/papaja}
-
-\hypertarget{ref-R-data.table}{}
-Dowle, M., \& Srinivasan, A. (2019). \emph{Data.table: Extension of
-`data.frame`}. Retrieved from
-\url{https://CRAN.R-project.org/package=data.table}
-
-\hypertarget{ref-R-base}{}
-R Core Team. (2018). \emph{R: A language and environment for statistical
-computing}. Vienna, Austria: R Foundation for Statistical Computing.
-Retrieved from \url{https://www.R-project.org/}
-
-\hypertarget{ref-R-usethis}{}
-Wickham, H., \& Bryan, J. (2018). \emph{Usethis: Automate package and
-project setup}. Retrieved from
-\url{https://CRAN.R-project.org/package=usethis}
-
-\hypertarget{ref-R-dplyr}{}
-Wickham, H., François, R., Henry, L., \& Müller, K. (2019). \emph{Dplyr:
-A grammar of data manipulation}. Retrieved from
-\url{https://CRAN.R-project.org/package=dplyr}
-
-\hypertarget{ref-R-devtools}{}
-Wickham, H., Hester, J., \& Chang, W. (2018). \emph{Devtools: Tools to
-make developing r packages easier}. Retrieved from
-\url{https://CRAN.R-project.org/package=devtools}
 
 \endgroup
 
