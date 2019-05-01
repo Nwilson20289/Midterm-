@@ -157,7 +157,11 @@ knitr::kable(xtable(summary_out))
 ```
 
 
+\newpage 
+
 # Power Analysis 
+Figure 2 
+Power Analysis 
 
 
 \newpage
