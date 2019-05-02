@@ -19,7 +19,6 @@ affiliation:
     
 authornote: |
   A Brooklyn College Graduate Student. Also, a Brooklyn College Research Assistant. 
-
 abstract: |
  
  A reproduction of the analysis for Experiment 1 from
@@ -27,13 +26,13 @@ abstract: |
  
   This report re-produces the analysis of Experiment 1 reported in Ella L.James and John R. Geddes (2015). The data was downloaded from ("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv") 
   
-  James et al.(2015) analyzed two trial gatherings, anticipating that a gathering that finished a memory-reactivation task in addition to Tetris amusement play would demonstrate a lower recurrence of meddling recollections of an awful film, compared with a control bunch given no undertakings. The reactivation-in addition to Tetris gathering (n = 26) finished a memory-reactivation task—introduction of 11 film stills pursued by a filler task for 10 min and afterward played Tetris for 12 min. The control gathering (n = 26) was neither given the memory-reactivation task nor played Tetris; rather, after the 10-min filler task, they had a 12-min break in which there was no undertaking. Along these lines, the two gatherings kept on chronicle meddling recollections for 7 (Days 1– 7). they predicted that reconsolidation of a reactivated visual memory of experimental trauma could be disrupted by engaging in a visuospatial task that would compete for visual working memory resources. 
-  <!-- https://tinyurl.com/ybremelq -->
+ Analyzed two trial gatherings, anticipating that a gathering that finished a memory-reactivation task in addition to Tetris amusement play would demonstrate a lower recurrence of meddling recollections of an awful film, compared with a control bunch given no undertakings. The reactivation-in addition to Tetris gathering (n = 26) finished a memory-reactivation task—introduction of 11 film stills pursued by a filler task for 10 min and afterward played Tetris for 12 min. The control gathering (n = 26) was neither given the memory-reactivation task nor played Tetris; rather, after the 10-min filler task, they had a 12-min break in which there was no undertaking. Along these lines, the two gatherings kept on chronicle meddling recollections for 7 (Days 1– 7). they predicted that reconsolidation of a reactivated visual memory of experimental trauma could be disrupted by engaging in a visuospatial task that would compete for visual working memory resources. 
+  
   
 keywords          : "intrusive memory, intrusions, reconsolidation, computer game, involuntary memory, trauma film, mental imagery, emotion, open data, open materials"
 wordcount         : "X"
 
-bibliography      : ["r-references.bib"]
+bibliography      : ["r-references.bib","refs.bib"]
 
 floatsintext      : no
 figurelist        : no
@@ -64,10 +63,10 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
  <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
 
 ## Participants
-There were 52 partcipants. 26 per section.  
+There were 69 partcipants. 26 per section.  
 
 ## Material
-The details of the Computer Game Play Reduces Intrusive Memories of Experimental Trauma via Reconsolidation-Update Mechanisms are in the report of James et al(2015). 
+The details of the Computer Game Play Reduces Intrusive Memories of Experimental Trauma via Reconsolidation-Update Mechanisms are in the report of @james2015computer. 
 
 ## Procedure
 This test included three research facility sessions just as the fruition of a pen-and-paper journal at home to record the every day recurrence of meddlesome recollections (both more than 24 hr and after that for an extra 7 days).
@@ -76,26 +75,19 @@ This test included three research facility sessions just as the fruition of a pe
 library(data.table)
 #fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")
 all_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")
-
-
 all_data$Condition <- as.factor(all_data$Condition)
 levels(all_data$Condition) <- c("Control",
                                 "Reactivation+Tetris", 
                                 "Tetris_only",
                                 "Reactivation_only")
-
 library(dplyr)
-
 library(ggplot2)
-
 # get means and SEs
 descriptive_df <- all_data %>% 
                     group_by(Condition) %>% 
                     summarise(means= mean(Days_One_to_Seven_Number_of_Intrusions),
                               SEs = sd(Days_One_to_Seven_Number_of_Intrusions)/sqrt(length(Days_One_to_Seven_Number_of_Intrusions)))
-
 aov(Days_One_to_Seven_Number_of_Intrusions ~ Condition, all_data)
-
 ```
 
 
@@ -135,10 +127,7 @@ descriptive_df <- all_data %>%
                     group_by(Condition) %>% 
                     summarise(means= mean(Days_One_to_Seven_Number_of_Intrusions),
                               SEs = sd(Days_One_to_Seven_Number_of_Intrusions)/sqrt(length(Days_One_to_Seven_Number_of_Intrusions)))
-
 knitr::kable(descriptive_df)
-
-
 ```
 
 \newpage
@@ -147,12 +136,9 @@ Table 2
 ANOVA Table for Experiment 1. 
 
 ```{r}
-
-
 library(xtable)
 aov_out<-aov(Days_One_to_Seven_Number_of_Intrusions ~ Condition, all_data)
 summary_out<-summary(aov_out)
-
 knitr::kable(xtable(summary_out))
 ```
 
@@ -175,7 +161,7 @@ sim_power_anova <- function(x){
   return(aov_results[[1]]$`Pr(>F)`[1])
 }
 # vector of effect sizes
-effect_sizes <- seq(.01,2,.014)
+effect_sizes <- seq(.1,2,.1)
 # run simulation for each effect size 1000 times
 power <- sapply(effect_sizes, 
           FUN = function(x) {
@@ -194,17 +180,10 @@ ggplot(plot_df, aes(x=effect_sizes,
 \newpage
 
 # References
---Refencees
-```{r create_r-references}
-library("citr")
-"James, E. L., Bonsall, M. B., Hoppitt, L., Tunbridge, E. M., Geddes, J. R., Milton, A. L., & Holmes, E. A. (2015). Computer Game Play Reduces Intrusive Memories of Experimental Trauma via Reconsolidation-Update Mechanisms. Psychological Science, 26(8), 1201-1215. doi:10.1177/0956797615583071"
 
- 
-```
 \begingroup
 \setlength{\parindent}{-0.5in}
 \setlength{\leftskip}{0.5in}
 
 <div id = "refs"></div>
 \endgroup
-
