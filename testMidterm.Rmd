@@ -26,7 +26,7 @@ abstract: |
  
   This report re-produces the analysis of Experiment 1 reported in Ella L.James and John R. Geddes (2015). The data was downloaded from ("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv") 
   
- Analyzed two trial gatherings, anticipating that a gathering that finished a memory-reactivation task in addition to Tetris amusement play would demonstrate a lower recurrence of meddling recollections of an awful film, compared with a control bunch given no undertakings. The reactivation-in addition to Tetris gathering (n = 26) finished a memory-reactivation task—introduction of 11 film stills pursued by a filler task for 10 min and afterward played Tetris for 12 min. The control gathering (n = 26) was neither given the memory-reactivation task nor played Tetris; rather, after the 10-min filler task, they had a 12-min break in which there was no undertaking. Along these lines, the two gatherings kept on chronicle meddling recollections for 7 (Days 1– 7). they predicted that reconsolidation of a reactivated visual memory of experimental trauma could be disrupted by engaging in a visuospatial task that would compete for visual working memory resources. 
+ Analyzed two trial gatherings, anticipating that a gathering that finished a memory-reactivation task in addition to Tetris amusement play would demonstrate a lower recurrence of meddling recollections of an awful film, compared with a control bunch given no undertakings. The reactivation-in addition to Tetris gathering (N = 52) finished a memory-reactivation task—introduction of 11 film stills pursued by a filler task for 10 min and afterward played Tetris for 12 min. The control gathering (n = 26) was neither given the memory-reactivation task nor played Tetris; rather, after the 10-min filler task, they had a 12-min break in which there was no undertaking. Along these lines, the two gatherings kept on chronicle meddling recollections for 7 (Days 1– 7). they predicted that reconsolidation of a reactivated visual memory of experimental trauma could be disrupted by engaging in a visuospatial task that would compete for visual working memory resources. 
   
   
 keywords          : "intrusive memory, intrusions, reconsolidation, computer game, involuntary memory, trauma film, mental imagery, emotion, open data, open materials"
@@ -63,7 +63,7 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
  <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
 
 ## Participants
-There were 69 partcipants. 26 per section.  
+There were 52 partcipants. 13 per section.  
 
 ## Material
 The details of the Computer Game Play Reduces Intrusive Memories of Experimental Trauma via Reconsolidation-Update Mechanisms are in the report of @james2015computer. 
