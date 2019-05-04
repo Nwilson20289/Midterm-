@@ -151,11 +151,12 @@ Power Analysis
 ```{r echo=FALSE}
 # function to run a simulated t-test
 sim_power_anova <- function(x){
-  A <- rnorm(n=26,mean=0, sd=1)
-  B <- rnorm(n=26,mean=0, sd=1)
-  C <- rnorm(n=26,mean=(0+x), sd=1)
-  df <- data.frame(condition = as.factor(rep(c("A","B","C"),each=26)),
-                   DV = c(A,B,C))
+  A <- rnorm(n=13,mean=0, sd=1)
+  B <- rnorm(n=13,mean=0, sd=1)
+  C <- rnorm(n=13,mean=0, sd=1)
+  D <- rnorm(n=13,mean=(0+x), sd=1)
+  df <- data.frame(condition = as.factor(rep(c("A","B","C","D"),each=13)),
+                   DV = c(A,B,C,D))
   aov_results <- summary(aov(DV~condition,df))
   #return the pvalue
   return(aov_results[[1]]$`Pr(>F)`[1])
